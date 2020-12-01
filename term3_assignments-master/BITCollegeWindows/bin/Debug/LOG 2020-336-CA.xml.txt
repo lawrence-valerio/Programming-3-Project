@@ -1,0 +1,55 @@
+
+Error: System.ServiceModel.EndpointNotFoundException: There was no endpoint listening at http://localhost:50510/CollegeRegistration.svc that could accept the message. This is often caused by an incorrect address or SOAP action. See InnerException, if present, for more details. ---> System.Net.WebException: Unable to connect to the remote server ---> System.Net.Sockets.SocketException: No connection could be made because the target machine actively refused it 127.0.0.1:50510
+   at System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   at System.Net.ServicePoint.ConnectSocketInternal(Boolean connectFailure, Socket s4, Socket s6, Socket& socket, IPAddress& address, ConnectSocketState state, IAsyncResult asyncResult, Exception& exception)
+   --- End of inner exception stack trace ---
+   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at System.ServiceModel.Channels.HttpOutput.WebRequestHttpOutput.GetOutputStream()
+   --- End of inner exception stack trace ---
+
+Server stack trace: 
+   at System.ServiceModel.Channels.HttpOutput.WebRequestHttpOutput.GetOutputStream()
+   at System.ServiceModel.Channels.HttpOutput.Send(TimeSpan timeout)
+   at System.ServiceModel.Channels.HttpChannelFactory`1.HttpRequestChannel.HttpChannelRequest.SendRequest(Message message, TimeSpan timeout)
+   at System.ServiceModel.Channels.RequestChannel.Request(Message message, TimeSpan timeout)
+   at System.ServiceModel.Dispatcher.RequestChannelBinder.Request(Message message, TimeSpan timeout)
+   at System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   at System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   at System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   at System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   at System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   at BITCollegeWindows.CollegeRegistrationService.ICollegeRegistration.UpdateGrade(Double grade, Int32 registrationId, String notes)
+   at BITCollegeWindows.CollegeRegistrationService.CollegeRegistrationClient.UpdateGrade(Double grade, Int32 registrationId, String notes) in C:\Users\valer\Desktop\bit term 3\programming\term3_assignments-master\BITCollegeWindows\Connected Services\CollegeRegistrationService\Reference.cs:line 95
+   at BITCollegeWindows.BatchProcess.ProcessTransaction(IEnumerable`1 transactionRecords) in C:\Users\valer\Desktop\bit term 3\programming\term3_assignments-master\BITCollegeWindows\BatchProcess.cs:line 176
+grade 90.4 applied to student 10010879 for registration 720
+Error: An error has occured while updating the registration.
+Error: Student has exceeded maximum attempts on mastery course.
+XML file named 2020-336-CA.xml does not exists.
+Successful Registration student 10010879 course M-50043
+-------ERROR-------
+File: 2020-336-CA.xml
+Program: <program>CM</program>
+Student Number: <student_no>10010879</student_no>
+Course Number: <course_no>M-50043</course_no>
+Registration Number: <registration_no>*</registration_no>
+Type: <type>3</type>
+Grade: <grade>*</grade>
+Notes: <notes>Good Registration</notes>
+Nodes: 7
+Program element value does not match the program attribute of the root element.
+-------------------
+-------ERROR-------
+File: 2020-336-CA.xml
+Program: <program>CM</program>
+Student Number: <student_no>10010879</student_no>
+Course Number: <course_no>M-50043</course_no>
+Registration Number: <registration_no>*</registration_no>
+Type: <type>3</type>
+Grade: <grade>*</grade>
+Notes: <notes>Good Registration</notes>
+Nodes: 7
+Program element value does not match the program attribute of the root element.
+-------------------
