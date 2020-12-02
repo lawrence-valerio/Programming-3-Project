@@ -280,16 +280,18 @@ namespace BITCollege_LV.Models
 
         public override double TuitionRateAdjustment(Student student)
         {
+            double tuitionRateFactorChanged = TuitionRateFactor;
+
             if (student.GradePointAverage < 0.75 && student.GradePointAverage > 0.50)
             {
-                TuitionRateFactor += 0.02;
+                tuitionRateFactorChanged += 0.02;
             }
             else if (student.GradePointAverage < 0.50)
             {
-                TuitionRateFactor += 0.05;
+                tuitionRateFactorChanged += 0.05;
             }
 
-            return TuitionRateFactor;
+            return tuitionRateFactorChanged;
         }
 
         public override void StateChangeCheck(Student student)
@@ -337,12 +339,14 @@ namespace BITCollege_LV.Models
 
             int numberOfRegistrations = listOfRegistrations.ToList().Count;
 
-            if(numberOfRegistrations >= 5)
+            double tuitionRateFactorChanged = TuitionRateFactor;
+
+            if (numberOfRegistrations >= 5)
             {
-                TuitionRateFactor += 0.035;
+                tuitionRateFactorChanged += 0.035;
             }
             
-            return TuitionRateFactor;
+            return tuitionRateFactorChanged;
         }
 
         public override void StateChangeCheck(Student student)
@@ -445,17 +449,18 @@ namespace BITCollege_LV.Models
 
             int numberOfRegistrations = listOfRegistrations.ToList().Count;
 
+            double tuitionRateFactorChanged = TuitionRateFactor;
+
             if (numberOfRegistrations >= 5)
             {
-                TuitionRateFactor -= 0.05;
-
+                tuitionRateFactorChanged -= 0.05;
             }
             if (student.GradePointAverage > 4.25)
             {
-                TuitionRateFactor -= 0.02;
+                tuitionRateFactorChanged -= 0.02;
             }
 
-            return TuitionRateFactor;
+            return tuitionRateFactorChanged;
         }
 
         public override void StateChangeCheck(Student student)

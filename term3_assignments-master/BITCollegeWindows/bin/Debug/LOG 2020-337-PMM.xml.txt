@@ -1,0 +1,56 @@
+
+-------ERROR-------
+File: 2020-337-PMM.xml
+Program: <program>PMM</program>
+Student Number: <student_no>11111111</student_no>
+Course Number: <course_no>M-16999</course_no>
+Registration Number: <registration_no>*</registration_no>
+Type: <type>1</type>
+Grade: <grade>@</grade>
+Notes: <notes>***ERROR*** Invalid Grade Value</notes>
+Nodes: 7
+Grade element value is incorrect.
+-------------------
+-------ERROR-------
+File: 2020-337-PMM.xml
+Program: <program>PMM</program>
+Student Number: <student_no>11111111</student_no>
+Course Number: <course_no>G-169996</course_no>
+Registration Number: <registration_no>*</registration_no>
+Type: <type>1</type>
+Grade: <grade>100</grade>
+Notes: <notes>***ERROR***  Grade for Type 1 should be a *</notes>
+Nodes: 7
+Grade element does not have a value of * with a type element value of 1 or Grade element does not have a value between 0-100 with a Type element value of 2.
+-------------------
+-------ERROR-------
+File: 2020-337-PMM.xml
+Program: <program>PMM</program>
+Student Number: <student_no>11111112</student_no>
+Course Number: <course_no>D-12345</course_no>
+Registration Number: <registration_no>*</registration_no>
+Type: <type>1</type>
+Grade: <grade>*</grade>
+Notes: <notes>***ERROR*** Course does not exist</notes>
+Nodes: 7
+Course_no element value does not have a value of * with a type element value of 2 or Course_no element value is not a valid course number
+-------------------
+-------ERROR-------
+File: 2020-337-PMM.xml
+Program: <program>PMM</program>
+Student Number: <student_no>11111111</student_no>
+Course Number: <course_no>G-169997</course_no>
+Registration Number: <registration_no>2001</registration_no>
+Type: <type>2</type>
+Grade: <grade>22</grade>
+Notes: <notes>***ERROR*** Course for Type 2 should be a *</notes>
+Nodes: 7
+Course_no element value does not have a value of * with a type element value of 2 or Course_no element value is not a valid course number
+-------------------
+grade 98 applied to student 11111111 for registration 3003
+grade 50 applied to student 11111112 for registration 3008
+Error: Student has exceeded maximum attempts on mastery course.
+Successful Registration student 11111111 course G-169996
+Successful Registration student 11111111 course G-169997
+Error: Student has exceeded maximum attempts on mastery course.
+Successful Registration student 11111112 course G-169996
