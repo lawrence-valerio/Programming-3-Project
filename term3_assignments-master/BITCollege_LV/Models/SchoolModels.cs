@@ -68,7 +68,7 @@ namespace BITCollege_LV.Models
         public DateTime DateCreated { get; set; }
 
         [Display(Name = "Grade\nPoint\nAverage")]
-        [RegularExpression(@"^([0-3](\.\d{1,2})?|[4](?:\.[0-9]{1,2})?)$")]
+        [RegularExpression(@"^([0-3](\.\d+)?|[4](?:\.[0-9]+)?)$")]
         [DisplayFormat(DataFormatString = "{0:F2}")]
         public double? GradePointAverage { get; set; }
 

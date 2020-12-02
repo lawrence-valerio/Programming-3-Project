@@ -109,7 +109,7 @@ namespace BITCollegeWindows
             ProcessErrors(programMatch, numericType, "Type element value is not numeric.");
 
             IEnumerable<XElement> gradeCheck = numericType.Where(x => Numeric.IsNumeric(x.Element("grade").Value, System.Globalization.NumberStyles.Number) || x.Element("grade").Value == "*");
-            ProcessErrors(numericType, gradeCheck, "Grade element value is not numeric or has a value of *.");
+            ProcessErrors(numericType, gradeCheck, "Grade element value is incorrect.");
 
             IEnumerable<XElement> typeValueCheck = gradeCheck.Where(x => x.Element("type").Value == "1" || x.Element("type").Value == "2");
             ProcessErrors(gradeCheck, typeValueCheck, "Type element does not have the value of 1 or 2.");
@@ -121,15 +121,19 @@ namespace BITCollegeWindows
             IEnumerable<XElement> studentNoCheck = gradeTypeCheck.Where(x => listOfStudentsQuery.Contains(long.Parse(x.Element("student_no").Value)));
             ProcessErrors(gradeTypeCheck, studentNoCheck, "Student_no element value is not a registered student number.");
 
-            IEnumerable<long> listOfCourseNumbers = db.Registrations.Select(x => x.RegistrationNumber).ToList();
-            IEnumerable<XElement> registrationNoCheck = studentNoCheck.Where(x => (x.Element("type").Value == "1" && x.Element("registration_no").Value == "*") || (x.Element("type").Value == "2" && listOfCourseNumbers.Contains(long.Parse(x.Element("registration_no").Value))));
-            ProcessErrors(studentNoCheck, registrationNoCheck, "Registration_no element value does not have a value of * with a type element value of 1 or Registration_no element value is not a valid registration number");
+            IEnumerable<string> listOfCourseNumbers = db.Courses.Select(x => x.CourseNumber).ToList();
+            IEnumerable<XElement> courseNoCheck = studentNoCheck.Where(x => (x.Element("type").Value == "2" && x.Element("course_no").Value == "*") || (x.Element("type").Value == "1" && listOfCourseNumbers.Contains(x.Element("course_no").Value)));
+            ProcessErrors(studentNoCheck, courseNoCheck, "Course_no element value does not have a value of * with a type element value of 2 or Course_no element value is not a valid course number");
+
+            IEnumerable<long> listOfRegistrationNumbers = db.Registrations.Select(x => x.RegistrationNumber).ToList();
+            IEnumerable<XElement> registrationNoCheck = courseNoCheck.Where(x => (x.Element("type").Value == "1" && x.Element("registration_no").Value == "*") || (x.Element("type").Value == "2" && listOfRegistrationNumbers.Contains(long.Parse(x.Element("registration_no").Value))));
+            ProcessErrors(courseNoCheck, registrationNoCheck, "Registration_no element value does not have a value of * with a type element value of 1 or Registration_no element value is not a valid registration number");
 
             ProcessTransaction(registrationNoCheck);
         }
 
         /// <summary>
-        /// Processes all valid transaction records to register a course for a student 
+        /// Processes all valid transaction records to register a course for a student  
         /// or update the grade of a student. 
         /// </summary>
         /// <param name="transactionRecords">Represents argument transaction records.</param>
