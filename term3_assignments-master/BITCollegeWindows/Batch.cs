@@ -24,32 +24,34 @@ namespace BITCollegeWindows
 
         /// <summary>
         /// given:  ensures key is entered
-        /// further code to be added
+        /// Processes the xml files.
         /// </summary>
         private void lnkProcess_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            //NOTE:  This may be commented out until needed
-            /*if (txtKey.Text == "")
+            if (txtKey.Text == "")
             {
                 MessageBox.Show("A 64-bit Key must be entered", "Error");
-            }*/
-
-            BatchProcess batchProcess = new BatchProcess();
-
-            if (radSelect.Checked)
-            {
-                batchProcess.ProcessTransmission(cbProgram.SelectedValue.ToString(), "sd");
-                rtxtLog.Text += batchProcess.WriteLogData();
             }
-
-            if (radAll.Checked)
+            else
             {
-                for (int i = 0; i < cbProgram.Items.Count; i++)
+                BatchProcess batchProcess = new BatchProcess();
+                string key = txtKey.Text;
+
+                if (radSelect.Checked)
                 {
-                    string description = cbProgram.GetItemText(cbProgram.Items[i]);
-                    AcademicProgram academicProgram = db.AcademicPrograms.Where(x => x.Description == description).SingleOrDefault();
-                    batchProcess.ProcessTransmission(academicProgram.ProgramAcronym, "sd");
+                    batchProcess.ProcessTransmission(cbProgram.SelectedValue.ToString(), key);
                     rtxtLog.Text += batchProcess.WriteLogData();
+                }
+
+                if (radAll.Checked)
+                {
+                    for (int i = 0; i < cbProgram.Items.Count; i++)
+                    {
+                        string description = cbProgram.GetItemText(cbProgram.Items[i]);
+                        AcademicProgram academicProgram = db.AcademicPrograms.Where(x => x.Description == description).SingleOrDefault();
+                        batchProcess.ProcessTransmission(academicProgram.ProgramAcronym, key);
+                        rtxtLog.Text += batchProcess.WriteLogData();
+                    }
                 }
             }
         }

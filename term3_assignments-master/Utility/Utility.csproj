@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="BusinessRules.cs" />
     <Compile Include="CourseType.cs" />
+    <Compile Include="Encryption.cs" />
     <Compile Include="GradePointValue.cs" />
     <Compile Include="Numeric.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

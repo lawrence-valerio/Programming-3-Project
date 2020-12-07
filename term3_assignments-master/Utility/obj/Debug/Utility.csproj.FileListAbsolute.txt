@@ -67,3 +67,9 @@ C:\Users\valer\Desktop\bit term 3\programming\term3_assignments-master\Utility\o
 C:\Users\valer\Desktop\bit term 3\programming\term3_assignments-master\Utility\obj\Debug\Utility.csproj.CoreCompileInputs.cache
 C:\Users\valer\Desktop\bit term 3\programming\term3_assignments-master\Utility\obj\Debug\Utility.dll
 C:\Users\valer\Desktop\bit term 3\programming\term3_assignments-master\Utility\obj\Debug\Utility.pdb
+C:\Users\valer\Desktop\bit term 3\programming\Programming-3-Backups\term3_assignments-master\Utility\bin\Debug\Utility.dll
+C:\Users\valer\Desktop\bit term 3\programming\Programming-3-Backups\term3_assignments-master\Utility\bin\Debug\Utility.pdb
+C:\Users\valer\Desktop\bit term 3\programming\Programming-3-Backups\term3_assignments-master\Utility\obj\Debug\Utility.csprojAssemblyReference.cache
+C:\Users\valer\Desktop\bit term 3\programming\Programming-3-Backups\term3_assignments-master\Utility\obj\Debug\Utility.csproj.CoreCompileInputs.cache
+C:\Users\valer\Desktop\bit term 3\programming\Programming-3-Backups\term3_assignments-master\Utility\obj\Debug\Utility.dll
+C:\Users\valer\Desktop\bit term 3\programming\Programming-3-Backups\term3_assignments-master\Utility\obj\Debug\Utility.pdb

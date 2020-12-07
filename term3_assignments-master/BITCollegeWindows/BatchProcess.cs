@@ -224,8 +224,8 @@ namespace BITCollegeWindows
         }
 
         /// <summary>
-        /// Creates the filename for the xml and the log file. Once the filename is created it then proceeds
-        /// with the detail and header processing.
+        /// Creates the filename for the xml, log file and encrypted file name. Once the encrypted 
+        /// file name exists it decrypts it and then it proceeds with the detail and header processing.
         /// </summary>
         /// <param name="programAcronym">Represents argument program acronym</param>
         /// <param name="key">Represents argument key</param>
@@ -239,21 +239,39 @@ namespace BITCollegeWindows
 
             logFileName = "LOG " + inputFileName + ".txt";
 
-            if (File.Exists(inputFileName))
+            string encryptedFileName = inputFileName + ".encrypted";
+
+            if (File.Exists(encryptedFileName))
             {
                 try
                 {
-                    ProcessHeader();
-                    ProcessDetails();
+                    Utility.Encryption.Decrypt(inputFileName, encryptedFileName, key);
+
+                    if (File.Exists(inputFileName))
+                    {
+                        try
+                        {
+                            ProcessHeader();
+                            ProcessDetails();
+                        }
+                        catch (Exception error)
+                        {
+                            logData += "\r\n" + error.Message;
+                        }
+                    }
+                    else
+                    {
+                        logData += "\r\nXML file named " + inputFileName + " does not exists.";
+                    }
                 }
-                catch (Exception error)
+                catch (Exception errorMessage)
                 {
-                    logData += "\r\n" + error.Message;
+                    logData += "\r\n" + errorMessage.Message;
                 }
             }
             else
             {
-                logData += "\r\nXML file named " + inputFileName + " does not exists.";
+                logData += "\r\nEncrypted file does not exist.";
             }
         }
     }
