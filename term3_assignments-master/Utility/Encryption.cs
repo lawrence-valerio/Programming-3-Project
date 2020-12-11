@@ -9,6 +9,12 @@ namespace Utility
 {
     public static class Encryption
     {
+        /// <summary>
+        /// Encrypts the plain text file with the supplied key.
+        /// </summary>
+        /// <param name="plainTextFileName">Represents the name of the plain text file.</param>
+        /// <param name="encryptedFileName">Represents the encrypted file name.</param>
+        /// <param name="key">Represents the decryption key.</param>
         public static void Encrypt(string plainTextFileName, string encryptedFileName, string key)
         {
             FileStream plainTextFileStream = new FileStream(plainTextFileName, FileMode.Open, FileAccess.Read);
@@ -32,6 +38,12 @@ namespace Utility
             encryptedFileNameStream.Close();
         }
 
+        /// <summary>
+        /// Decrypts a plain text file with the supplied key.
+        /// </summary>
+        /// <param name="plainTextFileName">Represents the name of the plain text file.</param>
+        /// <param name="encryptedFileName">Represents the encrypted file name.</param>
+        /// <param name="key">Represents the decryption key.</param>
         public static void Decrypt(string plainTextFileName, string encryptedFileName, string key)
         {
             StreamWriter streamWriter = new StreamWriter(plainTextFileName);
@@ -52,6 +64,7 @@ namespace Utility
 
                 streamWriter.Flush();
                 streamWriter.Close();
+                encryptedFileNameStream.Close();
             }
             catch (Exception)
             {
